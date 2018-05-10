@@ -7,20 +7,21 @@
 
     <TextView
         android:id="@+id/crime_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crime Title"/>
+        android:text="Crime Title" />
 
     <TextView
         android:id="@+id/crime_date"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crime Date"/>
+
+        android:text="Crime Date" />
 
     <Button
         android:id="@+id/police_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/police_button"/>
+        android:text="@string/police_button" />
 
 </LinearLayout>

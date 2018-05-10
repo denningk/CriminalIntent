@@ -101,19 +101,42 @@ public class CrimeListFragment extends Fragment {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
 
-            return new CrimeHolder(layoutInflater, parent);
+            if (viewType == 0) {
+                return new CrimeHolder(layoutInflater, parent);
+            } else {
+                return new CrimeHolderPolice(layoutInflater, parent);
+            }
+
+
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             Crime crime = mCrimes.get(position);
-            CrimeHolder crimeHolder = (CrimeHolder) holder;
-            crimeHolder.bind(crime);
+
+            if (crime.isRequiresPolice()) {
+                CrimeHolderPolice crimeHolder = (CrimeHolderPolice) holder;
+                crimeHolder.bind(crime);
+            } else {
+                CrimeHolder crimeHolder = (CrimeHolder) holder;
+                crimeHolder.bind(crime);
+            }
         }
 
         @Override
         public int getItemCount() {
             return mCrimes.size();
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            Crime currCrime = mCrimes.get(position);
+            if (currCrime.isRequiresPolice()) {
+                return 2;
+            } else {
+                return 0;
+            }
+
         }
     }
 }
